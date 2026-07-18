@@ -1,0 +1,46 @@
+# === Apex Autonomous Trader — Python Dependencies ===
+
+# --- Web Framework ---
+fastapi==0.115.12
+uvicorn[standard]==0.34.3
+python-multipart==0.0.20
+
+# --- Database ---
+sqlalchemy==2.0.41
+alembic==1.16.2
+psycopg2-binary==2.9.10
+asyncpg==0.30.0
+
+# --- Cache ---
+redis==5.3.0
+
+# --- Bybit Exchange ---
+pybit==5.9.0
+requests==2.32.4
+
+# --- Technical Analysis ---
+pandas==2.2.3
+pandas-ta==0.3.14b
+numpy==2.3.0
+
+# --- Configuration ---
+pydantic==2.11.4
+pydantic-settings==2.9.1
+python-dotenv==1.1.0
+
+# --- Auth ---
+python-jose[cryptography]==3.4.0
+passlib[bcrypt]==1.7.4
+
+# --- Monitoring ---
+prometheus-client==0.22.1
+prometheus-fastapi-instrumentator==7.0.2
+
+# --- Scheduling ---
+apscheduler==3.11.0
+
+# --- Websockets ---
+websockets==15.0.1
+
+# --- Utilities ---
+httpx==0.28.1
