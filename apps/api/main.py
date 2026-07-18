@@ -57,6 +57,10 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# Setup Structured Logging
+from services.monitoring.logger import setup_structured_logging
+setup_structured_logging()
+
 # CORS configuration for Web Dashboard
 app.add_middleware(
     CORSMiddleware,
@@ -65,6 +69,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Prometheus Metrics Endpoint
+from prometheus_client import make_asgi_app
+metrics_app = make_asgi_app()
+app.mount("/metrics", metrics_app)
 
 # Include Routers
 app.include_router(auth.router)
