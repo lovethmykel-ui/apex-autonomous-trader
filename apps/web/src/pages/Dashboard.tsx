@@ -13,15 +13,19 @@ const mockChartData = [
 ];
 
 const Dashboard = () => {
+  const [showFundsModal, setShowFundsModal] = useState(false);
+
   return (
-    <div className="page-container">
+    <div className="page-container relative">
       <div className="flex justify-between items-center mb-6">
         <div>
           <h1 className="text-gradient">Treasury Dashboard</h1>
           <p className="text-muted">Generation G-04 Active</p>
         </div>
         <div className="flex gap-4">
-          <button className="btn btn-outline"><Zap size={16} /> Run Scan</button>
+          <button className="btn btn-outline" onClick={() => setShowFundsModal(true)}>
+            <DollarSign size={16} /> Manage Funds
+          </button>
           <button className="btn btn-primary"><Activity size={16} /> System Online</button>
         </div>
       </div>
@@ -120,6 +124,53 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      {showFundsModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={() => setShowFundsModal(false)}>
+          <div className="glass-panel w-full max-w-lg p-6 m-4" onClick={e => e.stopPropagation()}>
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-xl font-bold flex items-center gap-2">
+                <Shield className="text-primary" /> Secure Treasury Management
+              </h2>
+              <button className="text-muted hover:text-white" onClick={() => setShowFundsModal(false)}>✕</button>
+            </div>
+            
+            <p className="text-sm text-muted mb-6">
+              For absolute security, this agent runs in a zero-withdrawal environment. Your API keys cannot withdraw funds. All capital flows must be handled directly through your exchange.
+            </p>
+
+            <div className="space-y-4">
+              <div className="p-4 rounded-lg bg-white/5 border border-white/10">
+                <h3 className="font-bold text-success flex items-center gap-2 mb-2">
+                  <TrendingUp size={16} /> How to Deposit
+                </h3>
+                <ol className="list-decimal pl-5 text-sm text-muted space-y-1">
+                  <li>Deposit USDT natively into your Bybit Derivatives account.</li>
+                  <li>Open Telegram and message the bot: <code className="bg-black/50 px-1 rounded text-primary">/spawn &lt;amount&gt;</code></li>
+                  <li>The bot will instantly verify the funds and spawn a new generation.</li>
+                </ol>
+                <a href="https://www.bybit.com/fiat/trade/deposit/crypto" target="_blank" rel="noreferrer" className="btn btn-outline w-full mt-4 justify-center text-sm">
+                  Go to Bybit Deposit
+                </a>
+              </div>
+
+              <div className="p-4 rounded-lg bg-white/5 border border-white/10">
+                <h3 className="font-bold text-warning flex items-center gap-2 mb-2">
+                  <TrendingDown size={16} /> How to Withdraw
+                </h3>
+                <ol className="list-decimal pl-5 text-sm text-muted space-y-1">
+                  <li>Open Telegram and message: <code className="bg-black/50 px-1 rounded text-primary">/stop_trading</code> or <code className="bg-black/50 px-1 rounded text-primary">/kill</code></li>
+                  <li>Wait for the bot to confirm all open positions are closed.</li>
+                  <li>Withdraw the USDT natively via your Bybit account.</li>
+                </ol>
+                <a href="https://www.bybit.com/user/assets/withdraw" target="_blank" rel="noreferrer" className="btn btn-outline w-full mt-4 justify-center text-sm">
+                  Go to Bybit Withdrawal
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
