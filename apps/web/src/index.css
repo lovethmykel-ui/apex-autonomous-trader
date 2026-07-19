@@ -356,12 +356,15 @@ tbody tr:hover {
 
 .flex { display: flex; }
 .flex-col { display: flex; flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
 .items-center { align-items: center; }
+.items-start { align-items: flex-start; }
 .justify-between { justify-content: space-between; }
 .justify-center { justify-content: center; }
 .gap-2 { gap: 0.5rem; }
 .gap-4 { gap: 1rem; }
 .gap-6 { gap: 1.5rem; }
+.mt-1 { margin-top: 0.25rem; }
 .mt-2 { margin-top: 0.5rem; }
 .mt-4 { margin-top: 1rem; }
 .mt-6 { margin-top: 1.5rem; }
@@ -369,3 +372,98 @@ tbody tr:hover {
 .mb-2 { margin-bottom: 0.5rem; }
 .mb-4 { margin-bottom: 1rem; }
 .mb-6 { margin-bottom: 1.5rem; }
+.p-3 { padding: 0.75rem; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
+.pl-5 { padding-left: 1.25rem; }
+.m-4 { margin: 1rem; }
+
+/* Positioning */
+.relative { position: relative; }
+.fixed { position: fixed; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+.z-50 { z-index: 50; }
+
+/* Sizing */
+.w-full { width: 100%; }
+.max-w-lg { max-width: 32rem; }
+.overflow-hidden { overflow: hidden; }
+
+/* Typography */
+.text-xs { font-size: 0.75rem; line-height: 1rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-right { text-align: right; }
+.font-bold { font-weight: 700; }
+.font-mono { font-family: var(--font-mono); }
+.italic { font-style: italic; }
+.text-primary { color: var(--accent-primary); }
+
+/* Lists */
+.list-decimal { list-style-type: decimal; }
+
+/* Spacing stacks */
+.space-y-1 > * + * { margin-top: 0.25rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
+
+/* Background & Border utilities for modal */
+.rounded { border-radius: var(--radius-sm); }
+.rounded-lg { border-radius: var(--radius-md); }
+
+.bg-white\/5 { background-color: rgba(255, 255, 255, 0.05); }
+.bg-black\/50 { background-color: rgba(0, 0, 0, 0.5); }
+.bg-black\/60 { background-color: rgba(0, 0, 0, 0.6); }
+.border { border-width: 1px; border-style: solid; }
+.border-white\/10 { border-color: rgba(255, 255, 255, 0.1); }
+
+.backdrop-blur-sm { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE OVERRIDES
+   ═══════════════════════════════════════════════════════════ */
+
+/* Small phones */
+@media (max-width: 480px) {
+  h1 { font-size: 1.25rem; }
+  .card-title { font-size: 0.9rem; }
+  .stat-value { font-size: 1.25rem !important; }
+  .btn { padding: 0.5rem 0.8rem; font-size: 0.8rem; }
+  th, td { padding: 0.5rem; font-size: 0.75rem; }
+  table { min-width: 500px; }
+}
+
+/* Tablets and smaller */
+@media (max-width: 768px) {
+  /* Force grid-3 span-2 items to full width */
+  .grid-3 > [style*="grid-column: span 2"],
+  .grid-3 > *[style*="grid-column"] {
+    grid-column: span 1 !important;
+  }
+
+  /* Page header stacking */
+  .page-container > .flex.justify-between {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .page-container > .flex.justify-between > .flex.gap-4 {
+    width: 100%;
+  }
+  .page-container > .flex.justify-between > .flex.gap-4 .btn {
+    flex: 1;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  /* Risk calculator side-by-side fix */
+  .flex.justify-between > .text-sm {
+    min-width: 0;
+  }
+
+  /* Table horizontal scroll */
+  .table-container {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
