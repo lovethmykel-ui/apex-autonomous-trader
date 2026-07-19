@@ -19,9 +19,9 @@ pybit==5.9.0
 requests==2.32.4
 
 # --- Technical Analysis ---
-pandas==2.2.3
-pandas-ta==0.3.14b
-numpy==2.3.0
+pandas
+pandas-ta>=0.4.67b0
+numpy<2.3.0
 
 # --- Configuration ---
 pydantic==2.11.4
